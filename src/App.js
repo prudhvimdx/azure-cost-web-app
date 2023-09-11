@@ -14,11 +14,15 @@ function App() {
       });
   }, []);
 
+
+
   return (
     <div>
-      const top10Services = data
-                                .sort((a, b) => b.price - a.price) // Sort in descending order
-                                .slice(0, 10); // Take the top 10
+      <ServiceList
+        top10Services={top10Services}
+        totalPriceTillNow={totalPriceTillNow}
+        expectedPriceByMonthEnd={expectedPriceByMonthEnd}
+      />
 
     </div>
   );
