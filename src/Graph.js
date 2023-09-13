@@ -1,22 +1,39 @@
-import React from 'react';
-import { Bar } from 'react-chartjs-2';
+import React, { Component } from "react";
+import Chart from "chart.js";
 
-function Graph({ data }) {
-  // Data for the graph
-  const chartData = {
-    labels: data.map((service) => service.name),
-    datasets: [
-      {
-        label: 'Price',
-        data: data.map((service) => service.price),
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1,
+class Graph extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        labels: ["January", "February", "March", "April", "May", "June"],
+        datasets: [
+          {
+            label: "Price",
+            data: [100, 150, 200, 250, 300, 350],
+            borderColor: "red",
+            backgroundColor: "red",
+          },
+        ],
       },
-    ],
-  };
+    };
+  }
 
-  return <Bar data={chartData} />;
+  render() {
+    return (
+      <div>
+        <Chart
+          data={this.state.data}
+          type="line"
+          options={{
+            title: "Price Chart",
+            xAxisLabel: "Month",
+            yAxisLabel: "Price",
+          }}
+        />
+      </div>
+    );
+  }
 }
 
 export default Graph;
